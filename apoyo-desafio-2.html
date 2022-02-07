@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Centro Médico Ñuñoa</title>
+</head>
+<script>
+document.write('<h1>Estadisticas centro medico ñuñoa</h1>');
+
+var radio = [
+    {hora: '11:00', especialista: 'IGNACIO SCHULZ', paciente: 'FRANCISCA ROJAS', rut: '9878782-1', prevision: 'FONASA'},
+    {hora: '11:30', especialista: 'FEDERICO SUBERCASEAUX', paciente: 'PAMELA ESTRADA', rut: '15345241-3', prevision: 'ISAPRE'},
+    {hora: '15:00', especialista: 'FERNANDO WURTHZ', paciente: 'ARMANDO LUNA', rut: '16445345-9', prevision: 'ISAPRE'},
+    {hora: '15:30', especialista: 'ANA MARIA GODOY', paciente: 'MANUEL GODOY', rut: '17666419-0', prevision: 'FONASA'},
+    {hora: '16:00', especialista: 'PATRICIA SUAZO', paciente: 'RAMON ULLOA', rut: '14989389-K', prevision: 'FONASA'},
+];
+
+var trauma = [
+    {hora: '8:00',  especialista: 'MARIA PAZ ALTUZARRA', paciente: 'PAULA SANCHEZ',     rut: '15554774-5', prevision: 'FONASA'},
+    {hora: '10:00', especialista: 'RAUL ARAYA',          paciente: 'ANGÉLICA NAVAS',    rut: '15444147-9', prevision: 'ISAPRE'},
+    {hora: '10:30', especialista: 'MARIA ARRIAGADA',     paciente: 'ANA KLAPP',         rut: '17879423-9', prevision: 'ISAPRE'},
+    {hora: '11:00', especialista: 'ALEJANDRO BADILLA',   paciente: 'FELIPE MARDONES',   rut: '1547423-6', prevision: 'ISAPRE'},
+    {hora: '11:30', especialista: 'CECILIA BUDNIK',      paciente: 'DIEGO MARRE',       rut: '16554741-K', prevision: 'FONASA'},
+    {hora: '12:00', especialista: 'ARTURO CAVAGNARO',    paciente: 'CECILIA MENDEZ',    rut: '9747535-8', prevision: 'ISAPRE'},
+    {hora: '12:30', especialista: 'ANDRES KANACRI',      paciente: 'MARCIAL SUAZO',     rut: '11254785-5', prevision: 'ISAPRE'},
+];
+
+var dental = [
+    {hora: '8:30',  especialista: 'ANDREA ZUÑIGA',          paciente: 'MARCELA RETAMAL',rut: '11123425-6', prevision: 'ISAPRE'},
+    {hora: '11:00', especialista: 'MARIA PIA ZAÑARTU',      paciente: 'ANGEL MUÑOZ',    rut: '9878789-2',  prevision: 'ISAPRE'},
+    {hora: '11:30', especialista: 'SCARLETT WITTING',       paciente: 'MARIO KAST',     rut: '7998789-5',  prevision: 'FONASA'},
+    {hora: '13:00', especialista: 'FRANCISCO VON TEUBER',   paciente: 'KARIN FERNANDEZ',rut: '18887662-K', prevision: 'FONASA'},
+    {hora: '13:30', especialista: 'EDUARDO VIÑUELA',        paciente: 'HUGO SANCHEZ',   rut: '17665461-4', prevision: 'FONASA'},
+    {hora: '14:00', especialista: 'RAQUEL VILLASECA',       paciente: 'ANA SEPULVEDA',  rut: '14441281-0', prevision: 'ISAPRE'},
+];
+
+//01 Agregar código para el desafio 2 aquí
+trauma.push(
+    {hora: "09:00", especialista : "RENE POBLETE", paciente: " ANA GELLONA", rut : "13123329-7 ", prevision: "ISAPRE",},
+    {hora: "09:30", especialista : "MARIA SOLAR", paciente: " RAMIRO ANDRADE", rut : "12221451-K ", prevision: "FONASA",},
+    {hora: "10:00", especialista : "RAUL LOYOLA", paciente: " CARMEN ISLA", rut : "10112348-3 ", prevision: "ISAPRE",},
+    {hora: "10:30", especialista : "ANTONIO LARENAS", paciente: "PABLO LOAYZA", rut : "13453234-1", prevision: "ISAPRE",},
+    {hora: "12:00", especialista : "MATIAS ARAVENA", paciente: "SUSANA POBLETE", rut : "14345656-6", prevision: "FONASA",},
+)
+
+//02 Eliminar primer y ultimo pacientes
+radio.pop()
+radio.shift()
+console.log(radio);
+
+
+//03 Listar Dental segun formato
+document.write(`
+<h2>Listado Dental</h2>
+`);
+dental.forEach((item) => {
+  document.write(`<p>${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}</p>`)
+});
+
+//04 Listar total de atenciones
+document.write(`
+<h2>Listado Total Atenciones</h2>
+`);
+let allAtencion = radio.concat(trauma, dental)
+console.log(allAtencion);
+allAtencion.forEach(item => {
+  document.write(`<p>${item.paciente}</p>`)
+})
+
+//05 Filtrar Isapre en Dental
+document.write(`
+<h2>Atenciones por Isapre en Dental</h2>
+`);
+let isapreAtencion = dental.filter(i => i.prevision === "ISAPRE") 
+isapreAtencion.forEach(item => {
+  document.write(`<p>${item.paciente} - ${item.prevision}</p>`)
+})
+
+//06 Filtrar Fonasa en Trauma
+document.write(`
+<h2>Atenciones por Fonasa en Traumatologia</h2>
+`);
+let fonasaAtencion = trauma.filter(i => i.prevision === "FONASA") 
+fonasaAtencion.forEach(item => {
+  document.write(`<p>${item.paciente} - ${item.prevision}</p>`)
+})
+
+//Agregar código para el desafio 2 aquí
+document.write(`
+<h2>Atenciones por Especialidad</h2>
+`);
+document.write(`<p>Cantidad de atenciones para Radiología: ${radio.length}</p>`);
+document.write(`<p>Cantidad de atenciones para Traumatología: ${trauma.length}</p>`);
+document.write(`<p>Cantidad de atenciones para Dental: ${dental.length}</p>`);
+
+document.write(`
+<h2>Primera y Ultima Atencion por Especialidad</h2>
+`);
+document.write(`<p>Primera atencion: ${radio[0].paciente} - ${radio[0].prevision} | Última atención: ${radio[radio.length -1].paciente} - ${radio[radio.length -1].prevision}.</p>`);
+document.write(`<p>Primera atencion: ${trauma[0].paciente} - ${trauma[0].prevision} | Última atención: ${trauma[trauma.length -1].paciente} - ${trauma[trauma.length -1].prevision}.</p>`);
+document.write(`<p>Primera atencion: ${dental[0].paciente} - ${dental[0].prevision} | Última atención: ${dental[dental.length -1].paciente} - ${dental[dental.length -1].prevision}.</p>`);
+
+</script>
+<body>
+    
+</body>
+</html>
